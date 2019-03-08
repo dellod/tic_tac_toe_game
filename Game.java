@@ -35,7 +35,8 @@ public class Game implements Constants {
 		stdin = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("\nPlease enter the name of the \'X\' player: ");
 		String name= stdin.readLine();
-		while (name == null) {
+		while (name == null) 
+		{
 			System.out.print("Please try again: ");
 			name = stdin.readLine();
 		}
@@ -51,6 +52,8 @@ public class Game implements Constants {
 		
 		oPlayer = create_player (name, LETTER_O, theGame.theBoard, stdin);
 		
+		xPlayer.setOpponent(oPlayer);
+		oPlayer.setOpponent(xPlayer);
 		theRef = new Referee();
 		theRef.setBoard(theGame.theBoard);
 		theRef.setoPlayer(oPlayer);
@@ -69,13 +72,11 @@ public class Game implements Constants {
 	 * @return a newly created player
 	 * @throws IOException
 	 */
-	static public Player  create_player(String name, char mark, Board board,
-			BufferedReader stdin)throws IOException {
+	static public Player  create_player(String name, char mark, Board board, BufferedReader stdin)throws IOException {
 		// Get the player type.
 		final int NUMBER_OF_TYPES = 4;
 		System.out.print ( "\nWhat type of player is " + name + "?\n");
-		System.out.print("  1: Human\n" + "  2: Random Player\n"
-		+ "  3: Blocking Player\n" + "  4: Smart Player\n");
+		System.out.print("  1: Human\n" + "  2: Random Player\n" + "  3: Blocking Player\n" + "  4: Smart Player\n");
 		System.out.print( "Please enter a number in the range 1-" + NUMBER_OF_TYPES + ": ");
 		int player_type = 0;
 
@@ -83,7 +84,8 @@ public class Game implements Constants {
 		stdin = new BufferedReader(new InputStreamReader(System.in));
 		input= stdin.readLine();
 		player_type = Integer.parseInt(input);
-		while (player_type < 1 || player_type > NUMBER_OF_TYPES) {
+		while (player_type < 1 || player_type > NUMBER_OF_TYPES) 
+		{
 			System.out.print( "Please try again.\n");
 			System.out.print ( "Enter a number in the range 1-" +NUMBER_OF_TYPES + ": ");
 			input= stdin.readLine();
